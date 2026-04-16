@@ -14,6 +14,7 @@ Bucket layout:
 """
 
 import boto3
+from botocore.exceptions import ClientError
 from prefect import task
 from prefect.logging import get_run_logger
 
@@ -53,8 +54,10 @@ def object_exists(key: str) -> bool:
     try:
         s3.head_object(Bucket=settings.nebius_bucket, Key=key)
         return True
-    except Exception:
-        return False
+    except ClientError as e:
+        if e.response["Error"]["Code"] == "404":
+            return False
+        raise
 
 
 @task(retries=3, retry_delay_seconds=10)

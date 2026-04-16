@@ -68,7 +68,7 @@ async def create_whisper_job(audio_key: str) -> str:
         container_audio_path = f"/data/{audio_key}"
         stem = audio_key.rsplit("/", 1)[-1].rsplit(".", 1)[0]
 
-        mount_source = settings.nebius_bucket_id or settings.nebius_bucket
+        mount_source = settings.nebius_bucket_id
 
         operation = await job_svc.create(
             CreateJobRequest(
@@ -123,7 +123,7 @@ async def create_ffmpeg_job(video_key: str) -> str:
     try:
         job_svc = JobServiceClient(sdk)
 
-        mount_source = settings.nebius_bucket_id or settings.nebius_bucket
+        mount_source = settings.nebius_bucket_id
         filename = video_key.rsplit("/", 1)[-1]
         stem = filename.rsplit(".", 1)[0]
         container_video_path = f"/data/{video_key}"

@@ -78,9 +78,3 @@ def upload_extracted_audio(local_audio: str, audio_key: str) -> str:
     logger = get_run_logger()
     logger.info(f"Uploading extracted audio to {audio_key}")
     return upload_object.fn(local_audio, audio_key)
-
-
-# TODO: extract_audio_remote - Nebius AI job with ffmpeg container
-# Same high-level contract: (video_key: str) -> str
-# Would run: ffmpeg -i /data/video/episode.mp4 -vn -q:a 2 /data/audio/episode.mp3
-# on a small CPU-only Nebius job.

@@ -1,5 +1,6 @@
 # Nebius Transcription Pipeline - Prefect
 
+# Test video file kept at the bucket root — change this to match your own setup
 root_video := "caching_strategies_rough_cut_v1_small.mp4"
 
 # Check bucket status (what needs processing)

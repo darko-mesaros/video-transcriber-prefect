@@ -47,12 +47,7 @@ NEBIUS_PIPELINE_NEBIUS_SUBNET_ID="<subnet-id>"
 NEBIUS_PIPELINE_NEBIUS_BUCKET_ID="<bucket-id>"
 ```
 
-There are sensible defaults in `src/nebius_pipeline/config.py` for bucket name, prefixes, image names, timeout, and disk size. CPU platform and preset may need to be overridden depending on region availability. For example, in `us-central1` you will likely want something like:
-
-```bash
-NEBIUS_PIPELINE_CPU_PLATFORM="cpu-d3"
-NEBIUS_PIPELINE_CPU_PRESET="4vcpu-16gb"
-```
+There are sensible defaults in `src/nebius_pipeline/config.py` for bucket name, prefixes, image names, timeout, disk size, and platform presets. The defaults target `us-central1` — if you're in a different region, you may need to override `CPU_PLATFORM` and `CPU_PRESET` in your `.env`.
 
 One important detail: `.env` should contain plain `KEY="value"` lines. Do not use `export KEY=...` there.
 
